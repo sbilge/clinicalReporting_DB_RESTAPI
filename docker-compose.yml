@@ -1,18 +1,22 @@
-version: '3'
-services:
-    mongodb:
-      image: mongo
-      ports:
-        - "27017:27017"
+ version: '3'
+ services:
+     mongodb:
+       image: mongo
+       ports:
+         - "27017:27017"
+ 
+     mongo-seed:
+       build: ./mongo-seed
+       image: personalizedoncology/clinicalreportingdbrestapi_mongo-seed
+       links:
+         - mongodb
 
-    mongo-seed:
-      build: ./mongo-seed
-      links:
-        - mongodb
-
-    api:
-      build: ./app
-      ports:
-        - "5000:5000"
-      depends_on:
-        - mongodb
+     api:
+       build: ./app
+       image: personalizedoncology/clinicalreportingdbrestapi_api
+       ports:
+         - "5000:5000"
+       volumes:
+          - ./app:/app:rw
+        depends_on:
+          - mongodb
