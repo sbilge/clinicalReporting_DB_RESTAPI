@@ -1,7 +1,9 @@
 FROM alpine:3.3
 ENV TERM xterm
 
-RUN apk add --update musl python3 py-pip bash ca-certificates
+LABEL maintainer="sueruen@informatik.uni-tuebingen.de"
+
+RUN apk add --update musl python3 nano py-pip bash ca-certificates
 RUN pip install --upgrade pip
 RUN rm /var/cache/apk/*
 
