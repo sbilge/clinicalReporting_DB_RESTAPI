@@ -55,7 +55,7 @@ DOMAIN = {'biograph_genes': genedrug }
 
 # Please note that MONGO_HOST and MONGO_PORT could very well be left
 # out as they already default to a bare bones local 'mongod' instance.
-MONGO_HOST = 'mongodb'
+MONGO_HOST = 'localhost'
 MONGO_PORT = 27017
 
 # Skip these if your db has no auth. But it really should.
